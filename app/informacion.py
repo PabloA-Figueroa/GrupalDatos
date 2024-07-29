@@ -214,14 +214,14 @@ def show():
         </div>
         <div class="grid-container">
             <div class="grid-item">
-                <h3 class="text-lg font-bold">Random Forest</h3>
+                <h3 class="text-lg font-bold">Regresion Lineal</h3>
                 <p class="text-sm text-muted-foreground">
                     Modelo de bosque aleatorio utilizado para predecir la variable objetivo.
                 </p>
                 <div class="p-6">
                     <div class="flex flex-col items-center justify-center space-y-4">
-                        <div class="text-6xl font-bold">91%</div>
-                        <p class="text-muted-foreground">Accuracy</p>
+                        <div class="text-6xl font-bold">0.6</div>
+                        <p class="text-muted-foreground">RMSE</p>
                     </div>
                 </div>
             </div>
