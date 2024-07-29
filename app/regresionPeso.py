@@ -1,4 +1,4 @@
-import os
+# import os
 # # Configurar la variable de entorno R_HOME y añadir el directorio de la DLL de R
 # os.environ['R_HOME'] = r"C:\Program Files\R\R-4.3.2"
 # os.add_dll_directory(r"C:\Program Files\R\R-4.3.2\bin\x64")
@@ -39,7 +39,7 @@ def show():
     con_pren = st.number_input("Controles Prenatales", value=10.0)
     num_emb = st.text_input("Número de Embarazos", value="2")
     num_par = st.number_input("Número de Partos", value=1.0)
-    etnia = st.selectbox("Etnia", ["Mestiza", "Etnia2", "Etnia3"])
+    etnia = st.selectbox("Etnia", ["Mestiza", "Mestiza", "Mestiza"])
     est_civil = st.selectbox("Estado Civil", ["Soltera", "Casada", "Divorciada", "Otro"])
     niv_inst = st.selectbox("Nivel de Instrucción", ["Ninguno", "Educación Básica", "Secundaria", "Otro"])
 

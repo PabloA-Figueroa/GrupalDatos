@@ -382,7 +382,7 @@ def show():
                 </p>
                 <div class="p-6">
                     <div class="flex flex-col items-center justify-center space-y-4">
-                        <div class="text-6xl font-bold">78%</div>
+                        <div class="text-6xl font-bold">96%</div>
                         <p class="text-muted-foreground">Accuracy</p>
                     </div>
                 </div>
