@@ -1,7 +1,7 @@
 import os
-# Configurar la variable de entorno R_HOME y añadir el directorio de la DLL de R
-os.environ['R_HOME'] = r"C:\Program Files\R\R-4.3.2"
-os.add_dll_directory(r"C:\Program Files\R\R-4.3.2\bin\x64")
+# # Configurar la variable de entorno R_HOME y añadir el directorio de la DLL de R
+# os.environ['R_HOME'] = r"C:\Program Files\R\R-4.3.2"
+# os.add_dll_directory(r"C:\Program Files\R\R-4.3.2\bin\x64")
 import streamlit as st
 import subprocess
 

@@ -359,8 +359,6 @@ def show():
             <div class="space-y-2">
                 <h2 class="text-3xl font-bold">Resultados Obtenidos</h2>
                 <p class="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                    Our predictive model has demonstrated strong performance metrics, highlighting its effectiveness in
-                    accurately forecasting the target variable.
                 </p>
             </div>
         </div>
@@ -390,13 +388,13 @@ def show():
                 </div>
             </div>
             <div class="grid-item">
-                <h3 class="text-lg font-bold">Arboles de Decision</h3>
+                <h3 class="text-lg font-bold">SVM</h3>
                 <p class="text-sm text-muted-foreground">
                     Modelo de árboles de decisión utilizado para predecir la variable objetivo.
                 </p>
                 <div class="p-6">
                     <div class="flex flex-col items-center justify-center space-y-4">
-                        <div class="text-6xl font-bold">82%</div>
+                        <div class="text-6xl font-bold">94%</div>
                         <p class="text-muted-foreground">RSME</p>
                     </div>
                 </div>
