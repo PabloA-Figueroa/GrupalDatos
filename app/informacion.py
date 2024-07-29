@@ -41,7 +41,31 @@ def show():
     <div class="flex-container">
         <div class="flex-item">
             <h2>INMET Paraná</h2>
-            <p style="text-align: justify;">El presente proyecto se basa en el análisis de datos meteorológicos diarios provenientes del O BDMEP (Base de Dados Meteorológicas diárias em Forma Digital), una base de datos que recopila información de las estaciones meteorológicas convencionales de la red del INMET (Instituto Nacional de Meteorología). El conjunto de datos utilizado en este proyecto se limita a las estaciones ubicadas en el Estado del Paraná, Brasil.</p>
+            <p style="text-align: justify;">El presente proyecto se basa en el análisis de datos meteorológicos diarios provenientes del O BDMEP (Base de Dados Meteorológicas diárias em Forma Digital), una base de datos que recopila información de las estaciones meteorológicas convencionales de la red del INMET (Instituto Nacional de Meteorología). El conjunto de datos utilizado en este proyecto se limita a las estaciones ubicadas en el Estado del Paraná, Brasil.
+            Varaibles: 
+            Character:
+                Municipio
+                Factor:
+                Tipo de clima
+                Integer:
+                Código de estación
+                Día del año
+                Numeric:
+                Temperatura del aire
+                Precipitación total
+                Presión atmosférica al nivel de la estación
+                Humedad relativa del aire
+                Velocidad del viento
+                Radiación global
+                Temperatura máxima en la hora anterior
+                Temperatura mínima en la hora anterior
+                Temperatura del punto de rocío
+                Temperatura máxima del punto de rocío en la hora anterior
+                Temperatura mínima del punto de rocío en la hora anterior
+                Presión atmosférica máxima en la hora anterior
+                Presión atmosférica mínima en la hora anterior
+                Rajada máxima de viento
+                Dirección del viento por hora</p>
         </div>
         <div class="flex-item">
             <img src="https://miro.medium.com/v2/resize:fit:1358/0*jqxx3-dJqFjXD6FA" alt="Hero">
@@ -53,7 +77,12 @@ def show():
                 <div class="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Data</div>
                 <h2 class="text-3xl font-bold">Sobre los Datos que se predijieron</h2>
                 <p class="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                    El dataset proviene del Banco de Dados Meteorológicos de Estações Meteorológicas Convencionais do INMET (BDMEP), que almacena datos meteorológicos diarios en formato digital de varias estaciones de la red INMET. Contiene millones de registros referentes a mediciones diarias conforme a las normas de la Organización Meteorológica Mundial. Los datos utilizados son exclusivamente del Estado de Paraná, Brasil.
+                    El conjunto de datos meteorológicos del Estado de
+                    Paraná, Brasil, incluye variables como hora en UTC,
+                    precipitación total horaria, presión atmosférica (al
+                    nivel de la estación, máxima y mínima en la hora
+                    anterior), radiación global, temperatura del aire y
+                    del punto de rocío. El archivo cuenta con mas de 3M de datos.
                 </p>
             </div>
         </div>
@@ -82,7 +111,50 @@ def show():
         </div>
     </section>    
     """, unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center;padding-top: 30px;padding-bottom: 30px;'>Analisis de Datos - Curiosidades</h2>", unsafe_allow_html=True)
+    # PCA y TSNE
+    colPCA, colTSNE = st.columns(2)
+    with colPCA:
+        st.markdown("<h2 style='padding-top: 1px;padding-bottom: 1px;text-align: center;'>PCA</h2>", unsafe_allow_html=True)
+        st.image("images/PCA.png", use_column_width=True, caption="PCA")
+        st.markdown("<p style='text-align: justify;'>"
+                    "Se observan que las primeras dos componentes principales (PC1 y PC2) explican una cantidad significativa de la varianza en los datos. PC1 explica aproximadamente el 28.86% de la varianza, mientras que PC2 explica el 22.26%. Juntas, PC1 y PC2 explican más del 51% de la varianza total en los datos."
+                    "</p>", unsafe_allow_html=True)
+    with colTSNE:
+        st.markdown("<h2 style='padding-top: 1px;padding-bottom: 1px;text-align: center;'>BOXPLOT</h2>", unsafe_allow_html=True)
+        st.image("images/BOXPLOT_BRASIL.png", use_column_width=True, caption="TSNE")
+        st.markdown("<p style='text-align: justify;'>"
+                    "Está gráfica nos permite observar diferencias claras en las temperaturas promedio y su variabilidad entre los diferentes municipios. Podemos identificar municipios con temperaturas más altas o más bajas, variabilidad en las temperaturas, y la presencia de valores atípicos. Esta información es útil para entender cómo el clima varía geográficamente y puede servir como base para estudios más detallados sobre los factores que influyen en estas diferencias de temperatura."
+                    "</p>", unsafe_allow_html=True)
+    st.markdown("<h2 style='padding-top: 20px;padding-bottom: 20px;background-color: #f0f0f0;text-align: center;'>EDA</h2>", unsafe_allow_html=True)
+
+    # EDA
+    colEDA1, colEDA2 = st.columns(2)
+    with colEDA1:
+        st.markdown("<h2 style='text-align: center;padding-top: 30px;padding-bottom: 30px;'>Analsis</h2>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: justify;'>"
+                    "Se observan que las primeras dos componentes principales (PC1 y PC2) explican una cantidad significativa de la varianza en los datos. PC1 explica aproximadamente el 28.86% de la varianza, mientras que PC2 explica el 22.26%. Juntas, PC1 y PC2 explican más del 51% de la varianza total en los datos."
+                    "</p>", unsafe_allow_html=True)
+    with colEDA2:
+        st.image("images/EDA_BRASIL.png", use_column_width=True, caption="PCA")
+
+
+    tipo1, tipo2 = st.columns(2)
+    with tipo1:
+        st.markdown("<h2 style='padding-top: 1px;padding-bottom: 1px;text-align: center;'>Precipitacion por municipio</h2>", unsafe_allow_html=True)
+        st.image("images/PROMEDIOTEMPERATURA_RADIACION.png", use_column_width=True, caption="Precipitacion por municipio")
+        st.markdown("<p style='text-align: justify;'>"
+                    "Los resultados indican una clara tendencia ascendente, donde la temperatura promedio del aire aumenta con la radiación global, lo que es coherente con el hecho de que la radiación solar es una fuente principal de calentamiento del aire"
+                    "</p>", unsafe_allow_html=True)
+    with tipo2:
+        st.markdown("<h2 style='padding-top: 1px;padding-bottom: 1px;text-align: center;'>Serie Temporal</h2>", unsafe_allow_html=True)
+        st.image("images/SERIE_TEMPORAL.png", use_column_width=True, caption="PCA")
+        st.markdown("<p style='text-align: justify;'>"
+                    "La gráfica de serie temporal de la temperatura del aire es muy útil para entender la variabilidad estacional y diaria de la temperatura. Muestra claramente los patrones cíclicos asociados con las estaciones del año y resalta la variabilidad diaria. No parece haber un cambio significativo en el nivel general de las temperaturas a lo largo del tiempo"
+                    "</p>", unsafe_allow_html=True)
     # PUNTOS IMPORTANTES IMAGENES
+    st.markdown("<h2 style='padding-top: 20px;padding-bottom: 20px;background-color: #f0f0f0;text-align: center;'>RESULTADOS OBTENIDOS</h2>", unsafe_allow_html=True)
+
     # PUNTOS IMPORTANTES IMAGENES REGRESION LINEAL
     colRL1, colRL2 = st.columns(2)
     with colRL1:
@@ -90,7 +162,7 @@ def show():
         st.image("images/RANDOMFOREST_PRECIPITACION.png", use_column_width=True, caption="Resultados Obtenidos")
     with colRL2:
         # Titulo de la imagen
-        st.markdown("<h2 style='text-align: center;padding-top: 30px;padding-bottom: 30px;'>Random Forest - Resultados Obtenidos</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center;padding-top: 30px;padding-bottom: 30px;'>Modelo Lineal</h2>", unsafe_allow_html=True)
         # Descripción de la imagen
         st.markdown("<p style='text-align: justify;'>"
                     "El Eje X representa las probabilidades predichas por el modelo de que haya lluvia. Va de 0 a 0.6 en el gráfico proporcionado, mientras que el. Eje Y: Representa la densidad de las probabilidades predichas. Esto indica cuán común es una probabilidad predicha específica en el conjunto de datos. "
@@ -101,7 +173,7 @@ def show():
     colRF1, colRF2 = st.columns(2)
     with colRF1:
         # Titulo de la imagen
-        st.markdown("<h2 style='text-align: center;padding-top: 30px;padding-bottom: 30px;'>Regresion Logistica - Resultados Obtenidos</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center;padding-top: 30px;padding-bottom: 30px;'>Regresion Logistica </h2>", unsafe_allow_html=True)
         # Descripción de la imagen
         st.markdown("<p style='text-align: justify;'>"
                     "La matriz de confusión muestra que el modelo tiene una alta precisión general del 96.33%, lo que indica que acierta en la mayoría de las predicciones. Sin embargo, la baja especificidad (0.0005) sugiere que el modelo tiene dificultades significativas para identificar correctamente las instancias de la clase negativa (0), mientras que su alta sensibilidad (0.99997) demuestra una capacidad casi perfecta para identificar la clase positiva (1). Esto puede estar relacionado con un desequilibrio en el conjunto de datos, donde la clase positiva es mucho menos frecuente. A pesar de la alta tasa de detección para la clase positiva, el bajo valor predictivo negativo (0.3611) y la baja estadística Kappa (9e-04) indican que el modelo no está mejorando mucho en comparación con una clasificación aleatoria y tiene problemas para generalizar a la clase negativa, lo que sugiere que se podrían necesitar ajustes adicionales para mejorar su rendimiento general."
@@ -109,11 +181,35 @@ def show():
     with colRF2:
         st.markdown("<h2 style='padding-top: 1px;padding-bottom: 1px;'></h2>", unsafe_allow_html=True)
         st.image("images/RegresionLineal.png", use_column_width=True, caption="Resultados Obtenidos")
+    #TITULO DE ARBOLES BINARIOS MD
+    st.markdown("<h2 style='text-align: center;padding-top: 30px;padding-bottom: 30px;'>Arboles de Decision </h2>", unsafe_allow_html=True)
+    # Arboles binarios
+    colAB1, colAB2 = st.columns(2)
+    with colAB1:
+        st.markdown("<h2 style='padding-top: 1px;padding-bottom: 1px;'></h2>", unsafe_allow_html=True)
+        st.image("images/ARBOLES_BINARIOS.png", use_column_width=True, caption="Resultados Obtenidos")
+    with colAB2:
+        st.markdown("<h2 style='text-align: center;padding-top: 30px;padding-bottom: 30px;'>Interpretacion</h2>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: justify;'>"
+                    "Con el árbol de decisión se obtuvieron las siguientes métricas: el MSE es de aproximadamente 0.488, el RMSE es de aproximadamente 0.698, y el MAE es de aproximadamente 0.550. Estas métricas indican que, en promedio, las predicciones del modelo están a una distancia de 0.698 unidades de los valores reales, lo cual es relativamente pequeño y sugiere un buen rendimiento del modelo."
+                    "</p>", unsafe_allow_html=True)
+
+    # RANDOM FOREST 2
+    colRF11, colRF12 = st.columns(2)
+    with colRF11:
+        st.markdown("<h2 style='text-align: center;padding-top: 30px;padding-bottom: 30px;'>Grafico de Dispersion</h2>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: justify;'>"
+                    "Sin embargo, la gráfica de predicciones frente a valores reales muestra cierta dispersión, especialmente en los extremos, indicando que el modelo tiene más dificultades para predecir valores extremos con precisión."
+                    "</p>", unsafe_allow_html=True)
+    with colRF12:
+        st.markdown("<h2 style='padding-top: 1px;padding-bottom: 1px;'></h2>", unsafe_allow_html=True)
+        st.image("images/DISPERSION_AB.png", use_column_width=True, caption="Resultados Obtenidos")
+
     st.markdown("""
     <section style="padding-top: 30px;padding-bottom: 30px;" class="section-container">
         <div class="container">
             <div class="space-y-2">
-                <h2 class="text-3xl font-bold">Resultados Obtenidos</h2>
+                <h2 class="text-3xl font-bold">Valores Obtenidos</h2>
             </div>
         </div>
         <div class="grid-container">
@@ -172,7 +268,18 @@ def show():
             <div class="space-y-2">
                 <h2 class="text-3xl font-bold">Sobre los Datos que se predijieron</h2>
                 <p  class="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                    Los modelos predictivos se enfocan en este caso en tres variables clave: el tipo de parto (Tipo_part), la edad materna (Edad) y el tipo de inscripción (Tipo_Ins). Estas variables se predijeron en base a ciertos datos para comprender mejor los patrones y las tendencias en los nacimientos y las inscripciones de los nacidos vivos en el país.
+                    El conjunto de datos contiene 230,381 observaciones y 47
+                    variables relacionadas con nacimientos en 2023.
+                    Información sobre el lugar de inscripción y nacimiento
+                    (provincia, cantón, parroquia)
+                    Fechas de inscripción y nacimiento, características del
+                    recién nacido (sexo, talla, peso, semanas de gestación,
+                    puntuaciones Apgar)
+                    Tipo de parto, lugar de ocurrencia, asistencia durante
+                    el parto, detalles de la madre (fecha de nacimiento,
+                    edad, número de embarazos y partos, consultas
+                    prenatales, etnia, estado civil, nivel de educación)
+                    Area de residencia (urbana o rural).
                 </p>
             </div>
         </div>
