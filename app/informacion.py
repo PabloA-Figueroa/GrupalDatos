@@ -244,7 +244,7 @@ def show():
                 </p>
                 <div class="p-6">
                     <div class="flex flex-col items-center justify-center space-y-4">
-                        <div class="text-6xl font-bold">82%</div>
+                        <div class="text-6xl font-bold">0.54</div>
                         <p class="text-muted-foreground">RSME</p>
                     </div>
                 </div>
@@ -382,7 +382,7 @@ def show():
                 </p>
                 <div class="p-6">
                     <div class="flex flex-col items-center justify-center space-y-4">
-                        <div class="text-6xl font-bold">96%</div>
+                        <div class="text-6xl font-bold">91.2%</div>
                         <p class="text-muted-foreground">Accuracy</p>
                     </div>
                 </div>
