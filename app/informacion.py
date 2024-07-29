@@ -390,7 +390,7 @@ def show():
             <div class="grid-item">
                 <h3 class="text-lg font-bold">SVM</h3>
                 <p class="text-sm text-muted-foreground">
-                    Modelo de árboles de decisión utilizado para predecir la variable objetivo.
+                    Modelo de aprendizaje supervisado que se utiliza en muchos problemas de clasificación y regresión
                 </p>
                 <div class="p-6">
                     <div class="flex flex-col items-center justify-center space-y-4">
